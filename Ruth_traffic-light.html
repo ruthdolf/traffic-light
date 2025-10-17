@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Traffic Light</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: auto;
+            align-items: center;
+            background-color: black;
+            width: 100px;
+            height: 300px;
+        }
+
+        .bulb {
+            border-radius: 50%;
+            background-color: grey;
+            cursor: pointer;
+            height: 70px;  
+            width: 70px;    
+            margin: auto;
+        }
+
+        .red_class {
+            background-color: red;
+        }
+
+        .yellow_class {
+            background-color: yellow;
+        }
+
+        .green_class {
+            background-color: green;
+        }
+
+
+        
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+        <div id="red_id" class="bulb" onclick="click_red();"> </div>
+        <div id="yellow_id" class="bulb" onclick="yellow_blinking();"> </div>
+        <div id="green_id" class="bulb" onclick="click_green();"> </div>
+    </div>
+  </body>
+
+  <script>
+    //variableName = document.getElementById("idName") means search the entire document for any elements with the id "idName"
+    //variableName.classList.action("className") means the class "className" is being removed, added etc. from the class list of any elements with the id "idName"
+    let yellow = document.getElementById("yellow_id");
+    let red = document.getElementById("red_id");
+    let green = document.getElementById("green_id");
+
+    //click red > (green off) > yellow on > yellow off > red on
+    function click_red(){
+        fetch("/red");
+        green.classList.remove("green_class");  //remove "green_class" from the class list of any elements with the id "green_id"
+        if (!red.classList.contains("red_class")) //if red isn't already on
+        {
+            fetch("/yellowON");
+
+            setTimeout( () => {
+                fetch("/yellowOFF");
+                remove_yellow();
+            },1000);
+
+            setTimeout( () => {
+                fetch("/red");
+                add_red();
+            },1100);
+        }
+    }
+
+    //click green > (red off) > yellow on > yellow off > green on
+    function click_green() {
+
+        red.classList.remove("red_class");
+        if (!green.classList.contains("green_class")) //if green isn't already on
+        {
+            yellow.classList.add("yellow_class"); 
+            fetch("/yellowON");
+
+            setTimeout( () => {
+                fetch("/yellowOFF");
+                remove_yellow();
+            },1000);
+
+            setTimeout( () => {
+                fetch("/green");
+                add_green();
+            },1100);
+            
+        }
+    }
+
+    /*function yellow_blinking() {
+        red.classList.remove("red_class");
+        green.classList.remove("green_class");
+
+        while (true) {
+            yellow.classList.add("yellow_class"); 
+            fetch("/yellowON");
+
+            setTimeout( () => {
+                fetch("/yellowOFF");
+                remove_yellow();
+            },500)
+        }
+        */
+
+        
+
+
+    function remove_yellow (){yellow.classList.remove("yellow_class");}
+    function add_red() {red.classList.add("red_class");}  //fetch()
+    function add_green() {green.classList.add("green_class");}
+        
+
+  </script>
+
+</html>
