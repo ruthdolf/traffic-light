@@ -1,0 +1,34 @@
+/* Container for the traffic light bulbs */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    background-color: black;
+    width: 100px;
+    height: 300px;
+}
+
+/* Basic bulb styling */
+.bulb {
+    border-radius: 50%;
+    background-color: grey;
+    cursor: pointer;
+    height: 70px;  
+    width: 70px;    
+    margin: auto;
+}
+
+/* Bulb colors when "on" */
+.red_class {
+    background-color: red;
+}
+
+.yellow_class {
+    background-color: yellow;
+}
+
+.green_class {
+    background-color: green;
+}
