@@ -35,7 +35,7 @@
   
 
 
-// Optional: yellow blinking function
+//yellow blinking function (not completed)
 function yellow_blinking() {
     red.classList.remove("red_class");
     green.classList.remove("green_class");
