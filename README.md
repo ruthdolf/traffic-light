@@ -8,7 +8,7 @@ This project in a course Mechatronics Lab simulates and controls a traffic light
 | File | Description |
 |------|--------------|
 | `arduino-only/traffic_light.ino` | Simple Arduino sketch for blinking LEDs representing traffic lights. |
-| `arduino-only/1_5_seconds` | |
+| `arduino-only/blinking_loop.ino` | Simple Arduino sketch for blinking |
 | `web/myHelloServer.ino` | ESP8266 web server program that serves the HTML interface and responds to HTTP requests to control LEDs. |
 | `web/traffic-light.html` | Web interface for the traffic light |
 | `web/style.css` | CSS for web interface |
