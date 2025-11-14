@@ -1,6 +1,9 @@
 # Traffic Light IoT Project
 
 This project in a course Mechatronics Lab simulates and controls a traffic light system using the **ESP8266** microcontroller and a web-based interface. It demonstrates basic LED control, web server setup, and communication between client-side JavaScript and server-side code.
+## Demo
+![Traffic Light Demo](assets/traffic-light.gif)
+
 
 
 ## Project Structure
