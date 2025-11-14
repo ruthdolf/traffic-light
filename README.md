@@ -7,9 +7,12 @@ This project in a course Mechatronics Lab simulates and controls a traffic light
 
 | File | Description |
 |------|--------------|
-| `traffic_light.ino` | Simple Arduino sketch for blinking LEDs representing traffic lights. |
-| `myHelloServer.ino` | ESP8266 web server program that serves the HTML interface and responds to HTTP requests to control LEDs. |
-| `Ruth_traffic-light.html` | Web interface for the traffic light, stored on the ESP8266's SPIFFS filesystem. |
+| `arduino-only/traffic_light.ino` | Simple Arduino sketch for blinking LEDs representing traffic lights. |
+| `arduino-only/1_5_seconds` | |
+| `web/myHelloServer.ino` | ESP8266 web server program that serves the HTML interface and responds to HTTP requests to control LEDs. |
+| `web/traffic-light.html` | Web interface for the traffic light |
+| `web/style.css` | CSS for web interface |
+| `web/script.js` | JavaScript handling light transitions and sending HTTP requests to the ESP8266. |
 
 
 ## Hardware Setup
@@ -26,8 +29,8 @@ Use resistors in series with each LED (typically 220Ω–330Ω).
 ## How It Works
 
 1. **Web Server (ESP8266)**
-   - Connects to WiFi using the SSID and password defined in `myHelloServer.ino`.
-   - Serves `Ruth_traffic-light.html` from SPIFFS.
+   - Connects to WiFi using the SSID and password defined in `web/myHelloServer.ino`.
+   - Serves `web/traffic-light.html` from SPIFFS.
    - Responds to `/red`, `/green`, `/yellowON`, and `/yellowOFF` requests to control LED states.
 
 2. **Web Interface**
@@ -35,21 +38,21 @@ Use resistors in series with each LED (typically 220Ω–330Ω).
    - JavaScript handles the light transition logic and updates the UI.
 
 3. **Arduino Sketch**
-   - `traffic_light.ino` provides a standalone example of how LEDs can be toggled in sequence.
+   - `arduino-only/traffic_light.ino` provides a standalone example of how LEDs can be toggled in sequence.
 
 
 ## Upload Instructions
 
 1. Open **Arduino IDE**.
 2. Install the **ESP8266 board package**.
-3. Open `myHelloServer.ino`.
+3. Open `web/myHelloServer.ino`.
 4. Go to **Tools > Board > NodeMCU 1.0 (ESP-12E Module)** (or equivalent).
 5. Set your WiFi credentials in the code:
    ```cpp
    #define STASSID "YourNetworkName"
    #define STAPSK "YourPassword"
    ```
-6. Upload `Ruth_traffic-light.html` to SPIFFS using the **ESP8266 Sketch Data Upload** tool.
+6. Upload `web/traffic-light.html` to SPIFFS using the **ESP8266 Sketch Data Upload** tool.
 7. Upload the `.ino` file to your ESP8266.
 8. Open **Serial Monitor** (115200 baud) to see your device’s IP address.
 9. Visit `http://<your-esp-ip>` in your browser.
